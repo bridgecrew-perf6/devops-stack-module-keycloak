@@ -13,6 +13,14 @@ spec:
     realm: devops-stack
     enabled: true
     displayName: devops-stack Realm
+{{- with .Values.userFederationProviders }}
+    userFederationProviders:
+      {{- toYaml . | nindent 6 }}
+{{- end }}
+{{- with .Values.userFederationMappers }}
+    userFederationMappers:
+      {{- toYaml . | nindent 6 }}
+{{- end }}
   instanceSelector:
     matchLabels:
       app: sso
