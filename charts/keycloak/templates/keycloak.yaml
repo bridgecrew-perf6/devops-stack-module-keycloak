@@ -19,3 +19,8 @@ spec:
         - name: "DB_ADDR"
         - name: "DB_USER"
         - name: "DB_PASSWORD"
+{{- if .Values.customCABundle }}
+        - name: X509_CA_BUNDLE
+          value: /etc/x509/https/*.crt
+{{- end }}
+
