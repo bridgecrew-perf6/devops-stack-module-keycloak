@@ -11,6 +11,7 @@ resource "argocd_project" "this" {
     description = "keycloak application project"
     source_repos = [
       "https://github.com/camptocamp/devops-stack-module-keycloak.git",
+      "https://github.com/cryptobioz/devops-stack-module-keycloak.git",
       "https://github.com/keycloak/keycloak-operator.git"
     ]
 
@@ -79,9 +80,9 @@ resource "argocd_application" "this" {
     project = argocd_project.this.metadata.0.name
 
     source {
-      repo_url        = "https://github.com/camptocamp/devops-stack-module-keycloak.git"
+      repo_url        = "https://github.com/cryptobioz/devops-stack-module-keycloak.git"
       path            = "charts/keycloak"
-      target_revision = "main"
+      target_revision = "add-user-federation"
       helm {
         values = data.utils_deep_merge_yaml.values.output
       }
