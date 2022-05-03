@@ -84,6 +84,8 @@ resource "argocd_application" "this" {
     namespace = var.argocd.namespace
   }
 
+  wait = true
+
   spec {
     project = argocd_project.this.metadata.0.name
 
